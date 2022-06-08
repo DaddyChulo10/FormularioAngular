@@ -1,0 +1,77 @@
+<h2>Template: Switches</h2>
+<hr>
+
+<form #Miformulario="ngForm">
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Género</label>
+    <div class="col-sm-9">
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radiogenero" id="m" value="M" [(ngModel)]="persona.genero"
+          required>
+        <label class="form-check-label" for="m">
+          Masculino
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radiogenero" id="f" value="F" [(ngModel)]="persona.genero"
+          required>
+        <label class="form-check-label" for="f">
+          Femenino
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+
+      <div class="form-check form-switch mt-2">
+        <input class="form-check-input" [(ngModel)]="persona.notificaciones" name="notificaciones" type="checkbox"
+          id="noti" checked>
+        <label class="form-check-label" for="noti">Recibir Notificaciones</label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="terminos" name="terminos" type="checkbox" id="tyc" required>
+        <label class="form-check-label" for="tyc">
+          Terminos y condiciones
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button [disabled]="Miformulario.invalid" class="btn btn-dark">Guardar</button>
+    </div>
+  </div>
+</form>
+
+
+<br>
+<h5>Valor del formulario</h5>
+<pre> {{Miformulario.value | json}} </pre>
+<br>
+<h5>Persona</h5>
+<pre> {{persona | json}} </pre>
+<br>
+<h5>Valid</h5>
+<pre> {{Miformulario.valid}} </pre>
+<br>
+<h5>Terminos</h5>
+<pre> {{ Miformulario.controls['terminos']?.errors | json }} </pre>
+<br>
+<h5>Condciones</h5>

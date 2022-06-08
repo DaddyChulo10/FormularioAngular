@@ -1,0 +1,58 @@
+<h2>Template: <small>Dinamicos</small></h2>
+<hr>
+
+<form (ngSubmit)="guardar()" #formularioOtro="ngForm">
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input [ngModel]="persona.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+      <span *ngIf="validarNombre()" class="form-text text-danger">Este campo es obligatorio</span>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input [(ngModel)]="nuevoJuego" (keyup.enter)="agregarJuego()" name="newjuego" class="form-control"
+          placeholder="Agregar Juego">
+        <button class="btn btn-outline-primary" type="button" (click)="agregarJuego()">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+      <div class="input-group  mb-1" *ngFor="let item of persona.favoritos; let i = index;">
+        <input [(ngModel)]="item.nombre" name="fav_{{i}} " class="form-control" required>
+        <button type="button" class="btn btn-outline-danger" (click)="eliminar(i)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button [disabled]="formularioOtro.invalid" type="button" class="btn btn-dark float-end"
+        (click)="guardar()">Guardar</button>
+    </div>
+  </div>
+
+</form>
+
+
+<span>Persona</span>
+<pre> {{persona | json}} </pre>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+    </p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
