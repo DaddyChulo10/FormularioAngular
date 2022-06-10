@@ -1,1 +1,73 @@
-<p>switches works!</p>
+<h2>Template: Switches</h2>
+<hr>
+
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Género</label>
+    <div class="col-sm-9">
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="m" value="M" formControlName="genero">
+        <label class="form-check-label" for="m">
+          Masculino
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="f" value="F" formControlName="genero">
+        <label class="form-check-label" for="f">
+          Femenino
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+
+      <div class="form-check form-switch mt-2">
+        <input class="form-check-input" type="checkbox" id="noti" formControlName="notificaciones">
+        <label class="form-check-label" for="noti">Recibir Notificaciones</label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="tyc" formControlName="condiciones">
+        <label class="form-check-label" for="tyc">
+          Terminos y condiciones
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-dark" type="guardar">Guardar</button>
+    </div>
+  </div>
+</form>
+
+
+<br>
+<h5>Valor del formulario</h5>
+<pre> {{miFormulario.value | json}} </pre>
+<br>
+<h5>Persona</h5>
+<pre> {{persona | json}} </pre>
+<br>
+<h5>Valid</h5>
+<pre> {{miFormulario.valid}} </pre>
+<br>
+<h5>Terminos</h5>
+<pre> {{ miFormulario.controls['terminos']?.errors | json }} </pre>
+<br>
